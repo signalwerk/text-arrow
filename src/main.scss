@@ -1,0 +1,94 @@
+@import url("https://fonts.signalwerk.ch/css/latest/family=Work+Sans:ital,wght@0,100..900;1,100..900.css");
+@import "./arrow.scss";
+
+@font-face {
+  font-family: "ArrowFont";
+  src: url("./arrow-font.otf") format("opentype");
+}
+
+:root,
+body {
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 2rem;
+  background: #f5f5f5;
+  font-size: 40px;
+}
+
+.container {
+  max-width: 20rem;
+  margin: 0 auto;
+  background: white;
+  padding: 3rem;
+  border-radius: 8px;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+.link {
+  color: #2d6aa6;
+  display: inline;
+  line-height: inherit;
+  position: relative;
+  cursor: pointer;
+  text-align: left;
+  vertical-align: bottom;
+  padding: 0px;
+  white-space: normal;
+  text-decoration: none;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  border-radius: 0px;
+  background: none padding-box;
+
+  &__text::after {
+    content: "⁠";
+    padding-left: 2rem;
+    display: inline;
+  }
+
+  &__icon {
+    @include arrow();
+    font-family: "ArrowFont";
+    font-size: 1.2em;
+    line-height: 1;
+    vertical-align: middle;
+    margin-left: 0.2em;
+    color: currentcolor;
+    display: inline;
+    width: 1em;
+    margin-left: -1.6em;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    .link__icon {
+      @include arrow-hover();
+    }
+  }
+}
+
+.link--external {
+  .link__icon {
+    &:before,
+    &:after {
+      transform: translateX(-0.05em) translateY(0.3em) rotate(-45deg);
+      transform-origin: 50%;
+    }
+  }
+  &:hover {
+    .link__icon {
+      &:before,
+      &:after {
+        transform: translateX(0.1em) translateY(0.15em) rotate(-45deg);
+      }
+    }
+  }
+}

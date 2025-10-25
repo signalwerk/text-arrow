@@ -1,0 +1,45 @@
+// $transition-hover-bounce: 0.3s ease-in-out;
+$transition-hover-bounce: 0.35s cubic-bezier(0.65, 0.62, 0.12, 2.06);
+
+@mixin arrow() {
+  & {
+    color: currentColor;
+    white-space: nowrap;
+    display: inline;
+    width: 1em;
+    margin-left: -1.6em;
+    position: relative;
+  }
+
+  &:before,
+  &:after {
+    transition: $transition-hover-bounce;
+    transition-property: transform, opacity;
+    display: inline-block;
+    position: absolute;
+    width: 0.25em;
+  }
+
+  &:before {
+    content: "\2060\E000";
+    padding-left: 0.25em;
+    padding-right: 0.75em;
+    opacity: 0;
+  }
+
+  &:after {
+    content: "\2060\E001";
+    padding-left: 0.75em;
+    padding-right: 0.25em;
+  }
+}
+
+@mixin arrow-hover() {
+  &:before,
+  &:after {
+    transform: translateX(0.3em);
+  }
+  &:before {
+    opacity: 1;
+  }
+}
